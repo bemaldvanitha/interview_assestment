@@ -25,6 +25,10 @@
     margin-bottom: 12px;
 }
 
+.login-form-alert {
+    margin-bottom: 16px;
+}
+
 .login-page-button-container {
     display: flex;
     justify-content: space-between;

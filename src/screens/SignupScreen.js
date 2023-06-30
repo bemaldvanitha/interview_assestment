@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Input, Button, Checkbox, Alert } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { signUp } from '../store/actions/AuthAction';
 
 import '../styles/SignupScreen.css';
 
@@ -13,6 +16,7 @@ const SignupScreen = () => {
     const [showAlert, setShowAlert] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -34,7 +38,7 @@ const SignupScreen = () => {
         setAgreeTerms(e.target.checked);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = useCallback(() => {
         setShowAlert(false);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const emailValid = emailRegex.test(email);
@@ -48,13 +52,15 @@ const SignupScreen = () => {
             console.log('Password:', password);
             console.log('Confirm Password:', confirmPassword);
             console.log('Agree Terms:', agreeTerms);
+
+            dispatch(signUp(username, email, password));
             navigate('/log-in');
 
         }else{
             setShowAlert(true);
             console.log('error');
         }
-    };
+    },[email, username, password, confirmPassword, agreeTerms]);
 
     return(
         <div className="register-form-container">
