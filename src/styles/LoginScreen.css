@@ -11,24 +11,6 @@
     margin-bottom: 20px;
 }
 
-.login-page-label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 4px;
-}
-
-.login-page-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 12px;
-}
-
-.login-form-alert {
-    margin-bottom: 16px;
-}
-
 .login-page-button-container {
     display: flex;
     justify-content: space-between;

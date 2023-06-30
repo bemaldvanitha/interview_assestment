@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from "react";
-import { Input, Button, Checkbox, Alert } from 'antd';
+import { Button, Checkbox } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { signUp } from '../store/actions/AuthAction';
+import CusAlert from "../components/CusAlert";
+import CusInput from "../components/CusInput";
 
 import '../styles/SignupScreen.css';
 
@@ -47,12 +49,7 @@ const SignupScreen = () => {
         const isUsernameValid = username.length >= 3;
 
         if(emailValid && isPasswordMatch && isPasswordValid && agreeTerms && isUsernameValid){
-            console.log('Username:', username);
-            console.log('Email:', email);
-            console.log('Password:', password);
-            console.log('Confirm Password:', confirmPassword);
-            console.log('Agree Terms:', agreeTerms);
-
+            console.log('register done');
             dispatch(signUp(username, email, password));
             navigate('/log-in');
 
@@ -67,56 +64,23 @@ const SignupScreen = () => {
             <h2 className="register-form-header">Sign Up</h2>
 
             {showAlert && (
-                <Alert
-                    className="register-form-alert"
-                    message="Error"
-                    description="Please make sure you have selected the terms and conditions and entered a valid email address
-                    and confirmed your password."
-                    type="error"
-                    showIcon
-                    closable
+                <CusAlert
+                    description={"Please make sure you have selected the terms and conditions and entered " +
+                        "a valid email address and confirmed your password."}
                 />
+
             )}
 
-            <label htmlFor="username" className="signup-page-label">
-                Username:
-            </label>
-            <Input
-                id="username"
-                value={username}
-                onChange={handleUsernameChange}
-                className="signup-page-input"
-            />
+            <CusInput title={'Username:'} id={'username'} htmlFor={'username'} inputValue={username}
+                      setValue={handleUsernameChange}/>
 
-            <label htmlFor="email" className="signup-page-label">
-                Email:
-            </label>
-            <Input
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                className="signup-page-input"
-            />
+            <CusInput title={'Email:'} id={'email'} htmlFor={'email'} inputValue={email} setValue={handleEmailChange}/>
 
-            <label htmlFor="password" className="signup-page-label">
-                Password:
-            </label>
-            <Input.Password
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                className="signup-page-input"
-            />
+            <CusInput title={'Password:'} id={'password'} htmlFor={'password'} isPassword={true}
+                      setValue={handlePasswordChange} inputValue={password}/>
 
-            <label htmlFor="passwordAgain" className="signup-page-label">
-                Password Again:
-            </label>
-            <Input.Password
-                id="passwordAgain"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                className="signup-page-input"
-            />
+            <CusInput title={'Password Again:'} id={'passwordAgain'} htmlFor={'passwordAgain'} isPassword={true}
+                setValue={handleConfirmPasswordChange} inputValue={confirmPassword}/>
 
             <Checkbox
                 checked={agreeTerms}

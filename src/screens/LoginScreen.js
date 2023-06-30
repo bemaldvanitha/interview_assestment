@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {Input, Button, Alert} from 'antd';
+import {Button} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signIn } from '../store/actions/AuthAction';
+import CusAlert from "../components/CusAlert";
+import CusInput from "../components/CusInput";
 
 import '../styles/LoginScreen.css';
 
@@ -48,46 +50,22 @@ const LoginScreen = () => {
             <h2 className="login-page-title">Login</h2>
 
             {authFail && (
-                <Alert
-                    className="login-form-alert"
-                    message="Error"
-                    description="Auth fail username or password invalid. Please register as new user"
-                    type="error"
-                    showIcon
-                    closable
+                <CusAlert
+                    description={"Auth fail username or password invalid. Please register as new user"}
                 />
             )}
 
             {validAlert && (
-                <Alert
-                    className="login-form-alert"
-                    message="Error"
+                <CusAlert
                     description="please enter valid username or password"
-                    type="error"
-                    showIcon
-                    closable
                 />
             )}
 
-            <label htmlFor="username" className="login-page-label">
-                Username:
-            </label>
-            <Input
-                id="username"
-                value={username}
-                onChange={handleUsernameChange}
-                className="login-page-input"
-            />
+            <CusInput title={'Username:'} id={'username'} htmlFor={'username'} inputValue={username}
+                      setValue={handleUsernameChange}/>
 
-            <label htmlFor="password" className="login-page-label">
-                Password:
-            </label>
-            <Input.Password
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                className="login-page-input"
-            />
+            <CusInput title={'Password:'} id={'password'} htmlFor={'password'} isPassword={true}
+                      inputValue={password} setValue={handlePasswordChange}/>
 
             <div className="login-page-button-container">
                 <Button type="primary" onClick={handleLogin} className="login-page-button">
@@ -98,6 +76,7 @@ const LoginScreen = () => {
                     Register
                 </Link>
             </div>
+
         </div>
     )
 }

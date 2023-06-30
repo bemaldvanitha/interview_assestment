@@ -12,20 +12,6 @@
     margin-bottom: 20px;
 }
 
-.signup-page-label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 4px;
-}
-
-.signup-page-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 12px;
-}
-
 .register-form-checkbox {
     margin-bottom: 16px;
 }
@@ -54,10 +40,6 @@
 
 .register-form-login-link-text:hover {
     text-decoration: underline;
-}
-
-.register-form-alert {
-    margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {
