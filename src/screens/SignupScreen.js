@@ -61,7 +61,7 @@ const SignupScreen = () => {
 
     return(
         <div className="register-form-container">
-            <h2 className="register-form-header">Sign Up</h2>
+            <p className="register-form-header">Sign Up</p>
 
             {showAlert && (
                 <CusAlert
@@ -87,7 +87,7 @@ const SignupScreen = () => {
                 onChange={handleAgreeTermsChange}
                 className="register-form-checkbox"
             >
-                I agree to the <Link to={'/'} className="register-form-login-link-text">terms and services</Link>
+                I agree with the <Link to={'/'} className="register-form-login-link-text">terms of services</Link>
             </Checkbox>
 
             <Button type="primary" onClick={handleSubmit} className="register-form-button">

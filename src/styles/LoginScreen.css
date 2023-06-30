@@ -9,6 +9,8 @@
 .login-page-title {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .login-page-button-container {

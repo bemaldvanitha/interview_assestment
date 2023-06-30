@@ -47,7 +47,7 @@ const LoginScreen = () => {
 
     return(
         <div className="login-page-container">
-            <h2 className="login-page-title">Login</h2>
+            <p className="login-page-title">Login</p>
 
             {authFail && (
                 <CusAlert
